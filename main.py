@@ -5,6 +5,8 @@ import parsing
 tracking = 'np00000000866099npi'
 url = 'https://novaposhta.ua/tracking/international/cargo_number/{}'.format(tracking)
 
+# t.me/NP_Shopping_Bot
+
 token = '874887236:AAGeU93uqdoe0GuecyHvMBVRd10wznxX9dk'
 
 bot = telebot.TeleBot(token)
