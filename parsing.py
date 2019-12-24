@@ -1,8 +1,8 @@
 import urllib.request
 from bs4 import BeautifulSoup
 
-# tracking = 'np00000000866099npi'
-# url = 'https://novaposhta.ua/tracking/international/cargo_number/{}'.format(tracking)
+tracking = 'np00000000866099npi'
+url = 'https://novaposhta.ua/tracking/international/cargo_number/{}'.format(tracking)
 
 def get_html(url):
     response = urllib.request.urlopen(url)
@@ -16,7 +16,7 @@ def parse(html):
     for row in table:
         columns = row.find_all('td')
         if columns:
-            # print(columns[0].text + ' --- ' + columns[1].text + ' --- ' + columns[2].text)
+            # results(columns[0].text + ' --- ' + columns[1].text + ' --- ' + columns[2].text)
             results = ({
                 'date': columns[0].text,
                 'status': columns[1].text,

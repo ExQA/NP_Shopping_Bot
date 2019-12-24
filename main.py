@@ -1,5 +1,4 @@
 import telebot
-
 import parsing
 
 tracking = 'np00000000866099npi'
@@ -19,8 +18,9 @@ def start_message(message):
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
-    if message.text == 'Привет':
-        bot.send_message(message.chat.id, parsing.get_html(url))
+    if message.text == 'test':
+        bot.send_message(message.chat.id, parsing.get_html(url)[0])
+        print(parsing.get_html(url)[0])
     elif message.text == 'Пока':
         bot.send_message(message.chat.id, 'the END')
 
