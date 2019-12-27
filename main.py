@@ -18,9 +18,9 @@ def start_message(message):
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
+    text = parsing.parse(url)
     if message.text == 'test':
-        bot.send_message(message.chat.id, parsing.get_html(url)[0])
-        print(parsing.get_html(url)[0])
+        bot.send_message(message.chat.id, text)
     elif message.text == 'Пока':
         bot.send_message(message.chat.id, 'the END')
 

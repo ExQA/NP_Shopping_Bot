@@ -4,12 +4,14 @@ from bs4 import BeautifulSoup
 tracking = 'np00000000866099npi'
 url = 'https://novaposhta.ua/tracking/international/cargo_number/{}'.format(tracking)
 
-def get_html(url):
+#def get_html(url):
+# response = urllib.request.urlopen(url)
+# html = response.read()
+
+
+def parse(url):
     response = urllib.request.urlopen(url)
-    return response.read()
-
-
-def parse(html):
+    html = response.read()
     soup = BeautifulSoup(html, "html.parser")
     table = soup.find('table', class_="tracking-int").find_all('tr')
 
@@ -28,7 +30,7 @@ def parse(html):
 
 
 def main():
-    parse(get_html(url))
+    parse(url)
 
 
 if __name__ == '__main__':
