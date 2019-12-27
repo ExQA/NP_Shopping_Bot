@@ -1,15 +1,16 @@
 import urllib.request
 from bs4 import BeautifulSoup
 
-tracking = 'np00000000866099npi'
-url = 'https://novaposhta.ua/tracking/international/cargo_number/{}'.format(tracking)
+# tracking = 'np00000000866099npi'
+# url = 'https://novaposhta.ua/tracking/international/cargo_number/{}'.format(tracking)
 
 #def get_html(url):
 # response = urllib.request.urlopen(url)
 # html = response.read()
 
 
-def parse(url):
+def parse(tracking):
+    url = 'https://novaposhta.ua/tracking/international/cargo_number/{}'.format(tracking)
     response = urllib.request.urlopen(url)
     html = response.read()
     soup = BeautifulSoup(html, "html.parser")
@@ -24,7 +25,8 @@ def parse(url):
                 'status': columns[1].text,
                 'country': columns[2].text
             })
-            print(results)
+
+            #result = str(results)
 
     return results
 

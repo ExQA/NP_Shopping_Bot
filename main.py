@@ -1,8 +1,9 @@
 import telebot
+from telebot import types
 import parsing
 
-tracking = 'np00000000866099npi'
-url = 'https://novaposhta.ua/tracking/international/cargo_number/{}'.format(tracking)
+# tracking = 'np00000000866099npi'
+# url = 'https://novaposhta.ua/tracking/international/cargo_number/{}'.format(tracking)
 
 # t.me/NP_Shopping_Bot
 
@@ -18,11 +19,21 @@ def start_message(message):
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
-    text = parsing.parse(url)
-    if message.text == 'test':
-        bot.send_message(message.chat.id, text)
-    elif message.text == 'Пока':
-        bot.send_message(message.chat.id, 'the END')
+    track_details = parsing.parse(message.text)
+
+    data = ('Time: ' + track_details['date'] + '\n' 
+            'Status: ' + track_details['status'] + '\n' 
+            'Country: ' + track_details['country']
+            )
+
+    bot.send_message(message.chat.id, data)
+
+
+@bot.callback_query_handler(func=lambda c: True)
+def answer(c):
+    key = types.InlineKeyboardMarkup()
+    button = types.InlineKeyboardButton(text='Text of button', callback_data='cat')
+    key.add(button)
 
 
 bot.polling()
