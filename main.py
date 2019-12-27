@@ -21,7 +21,9 @@ def start_message(message):
 def send_text(message):
     track_details = parsing.parse(message.text)
 
-    data = ('Time: ' + track_details['date'] + '\n' 
+    data = (
+            'Current place: ' + '\n'
+            'Time: ' + track_details['date'] + '\n' 
             'Status: ' + track_details['status'] + '\n' 
             'Country: ' + track_details['country']
             )
