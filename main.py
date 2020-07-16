@@ -1,41 +1,26 @@
 import telebot
-from telebot import types
 import parsing
-
+import config
 # tracking = 'np00000000866099npi'
 # url = 'https://novaposhta.ua/tracking/international/cargo_number/{}'.format(tracking)
 
 # t.me/NP_Shopping_Bot
+from database import subscribe, add_tracking
 
-token = '874887236:AAGeU93uqdoe0GuecyHvMBVRd10wznxX9dk'
-
+token = config.API_TOKEN
 bot = telebot.TeleBot(token)
 
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
-    bot.send_message(message.chat.id, 'Привет, ты написал мне /start')
+    subscribe(message.chat.id)
+    bot.send_message(message.chat.id, 'You subscribe')
 
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
     track_details = parsing.parse(message.text)
-
-    data = (
-            'Current place: ' + '\n'
-            'Time: ' + track_details['date'] + '\n' 
-            'Status: ' + track_details['status'] + '\n' 
-            'Country: ' + track_details['country']
-            )
-
-    bot.send_message(message.chat.id, data)
-
-
-@bot.callback_query_handler(func=lambda c: True)
-def answer(c):
-    key = types.InlineKeyboardMarkup()
-    button = types.InlineKeyboardButton(text='Text of button', callback_data='cat')
-    key.add(button)
+    bot.send_message(message.chat.id, track_details)
 
 
 bot.polling()
