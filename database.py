@@ -1,5 +1,6 @@
 import sqlite3
 
+
 def subscribe(user_id):
     connection = sqlite3.connect('db.db')
     cursor = connection.cursor()
@@ -14,6 +15,7 @@ def subscribe(user_id):
     else:
         print("NOT DONE")
 
+
 def add_tracking(track_id, status, country, date):
     connection = sqlite3.connect('db.db')
     cursor = connection.cursor()
@@ -26,4 +28,3 @@ def add_tracking(track_id, status, country, date):
         print("DONE")
     else:
         print("Data was added in table")
-

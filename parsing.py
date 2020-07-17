@@ -23,9 +23,9 @@ def parse(tracking):
                             }
         data = (
                 'Current place: ' + '\n'
-                'Time: ' + results['date'] + '\n'
-                'Status: ' + results['status'] + '\n'
-                'Country: ' + results['country']
+                'Time ⏰: ' + results['date'] + '\n'
+                'Status 🔎: ' + results['status'] + '\n'
+                'Country 🌎: ' + results['country']
                 )
 
 
@@ -37,8 +37,10 @@ def parse(tracking):
 
     except AttributeError:
         data = {
-            'Трек номер не найден'
+            '⛔Трек номер не найден⛔'
         }
+
+    print(data)
 
     return data
 
