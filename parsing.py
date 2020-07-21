@@ -27,6 +27,7 @@ def parse(tracking):
                 'Status 🔎: ' + results['status'] + '\n'
                 'Country 🌎: ' + results['country']
                 )
+        print(results)
 
 
         database.add_tracking(track_id=tracking,
