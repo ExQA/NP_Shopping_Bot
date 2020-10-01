@@ -1,6 +1,7 @@
 import telebot
 import parsing
 import config
+from loguru import logger
 # tracking = 'np00000000866099npi'
 # url = 'https://novaposhta.ua/tracking/international/cargo_number/{}'.format(tracking)
 

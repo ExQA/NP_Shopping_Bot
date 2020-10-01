@@ -1,4 +1,5 @@
 import mysql.connector
+from loguru import logger
 
 DB = mysql.connector.connect(
     host='127.0.0.1',
@@ -8,6 +9,12 @@ DB = mysql.connector.connect(
     database='np_shoping'
 )
 
+logger.add(
+    "debug.json", format="{format} {level} {message}",
+    level="DEBUG", serialize=True
+)
+
+@logger.catch
 def subscribe(user_id):
     cursor = DB.cursor()
 
@@ -20,7 +27,7 @@ def subscribe(user_id):
     else:
         print("NOT DONE")
 
-
+@logger.catch
 def add_tracking(track_id, status, country, date):
     cursor = DB.cursor()
 

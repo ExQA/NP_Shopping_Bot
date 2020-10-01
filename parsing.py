@@ -1,8 +1,14 @@
 import urllib.request
 from bs4 import BeautifulSoup
 import database
+from loguru import logger
 
+logger.add(
+    "debug.json", format="{format} {level} {message}",
+    level="DEBUG", serialize=True
+)
 
+@logger.catch
 def parse(tracking):
 
     url = 'https://novaposhta.ua/tracking/international/cargo_number/{}'.format(tracking)
