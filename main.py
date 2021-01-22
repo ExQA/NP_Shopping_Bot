@@ -5,7 +5,7 @@ import config
 # url = 'https://novaposhta.ua/tracking/international/cargo_number/{}'.format(tracking)
 
 # t.me/NP_Shopping_Bot
-from database import subscribe, add_tracking
+#from database import subscribe, add_tracking
 
 token = config.API_TOKEN
 bot = telebot.TeleBot(token)

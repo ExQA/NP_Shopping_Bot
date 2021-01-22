@@ -1,6 +1,6 @@
 import urllib.request
 from bs4 import BeautifulSoup
-import database
+#import database
 
 
 def parse(tracking):
@@ -30,11 +30,11 @@ def parse(tracking):
         print(results)
 
 
-        database.add_tracking(track_id=tracking,
-                              status=results['status'],
-                              country=results['country'],
-                              date=results['date'],
-                              )
+#        database.add_tracking(track_id=tracking,
+#                              status=results['status'],
+#                              country=results['country'],
+#                              date=results['date'],
+#                              )
 
     except AttributeError:
         data = {
