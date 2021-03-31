@@ -21,13 +21,14 @@ def parse(tracking):
                     'status': columns[1].text,
                     'country': columns[2].text
                             }
+#	print(type(results))
         data = (
                 'Current place: ' + '\n'
                 'Time ⏰: ' + results['date'] + '\n'
                 'Status 🔎: ' + results['status'] + '\n'
                 'Country 🌎: ' + results['country']
                 )
-        print(results)
+        print(type(results))
 
 
 #        database.add_tracking(track_id=tracking,
