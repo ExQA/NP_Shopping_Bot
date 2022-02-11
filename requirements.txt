@@ -10,7 +10,7 @@ idna==2.10
 loguru==0.5.3
 multidict==4.7.6
 mysql-connector-python==8.0.21
-protobuf==3.12.2
+protobuf==3.15.0
 pyTelegramBotAPI==3.7.2
 pytz==2020.1
 requests==2.24.0
